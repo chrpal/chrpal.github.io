@@ -53,9 +53,19 @@ function disconnect() {
 
 // Send data to the connected device
 function send(data) {
-  //
+   data = String(data);
+
+  if (!data || !characteristicCache) {
+    return;
+  }
+
+  writeToCharacteristic(characteristicCache, data);
+  log(data, 'out');
 }
 
+function writeToCharacteristic(characteristic, data) {
+  characteristic.writeValue(new TextEncoder().encode(data));
+}
 
 function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
@@ -87,12 +97,12 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(server => {
         log('GATT server connected, getting service...');
 
-        return server.getPrimaryService(0xFFE0);
+        return server.getPrimaryService("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
       }).
       then(service => {
         log('Service found, getting characteristic...');
 
-        return service.getCharacteristic(0xFFE1);
+        return service.getCharacteristic("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
       }).
       then(characteristic => {
         log('Characteristic found');
