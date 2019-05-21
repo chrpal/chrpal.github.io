@@ -96,9 +96,10 @@ function requestBluetoothDevice() {
 
   let filters = [];
   filters.push({name: "Zigbee_UART"});
+  filters.push({services: ["e50e24dcca9e-e0a9-f393-b5a3-6e400001"]});
   let options = {};
   options.filters = filters;
-  options.optionalServices = ["e50e24dcca9e-e0a9-f393-b5a3-6e400001"];
+  //options.optionalServices = ["e50e24dcca9e-e0a9-f393-b5a3-6e400001"];
   // options.acceptAllDevices = false;
   
   return navigator.bluetooth.requestDevice(options)
