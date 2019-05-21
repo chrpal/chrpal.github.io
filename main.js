@@ -150,6 +150,6 @@ function startNotifications(characteristic) {
 
 // Output to terminal
 function log(data, type = '') {
-  terminalContainer.insertAdjacentHTML('beforeend',
-'<div' + (type ? ' class="' + type + '"' : '') + '>' + data + '</div>');
+  //terminalContainer.insertAdjacentHTML('beforeend',
+//'<div' + (type ? ' class="' + type + '"' : '') + '>' + data + '</div>');
 }
