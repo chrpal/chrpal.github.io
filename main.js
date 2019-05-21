@@ -35,13 +35,7 @@ sendForm.addEventListener('submit', function(event) {
 
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
-  let filters = [];
-  filters.push({name: "Zigbee_UART"});
-  let options = {};
-  options.filters = filters;
-  options.acceptAllDevices = false;
-  
-  deviceCache = requestBluetoothDevice(options)
+  deviceCache = requestBluetoothDevice()
       .then(device => connectDeviceAndCacheCharacteristic(device))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
@@ -63,9 +57,15 @@ function send(data) {
 }
 
 
-function requestBluetoothDevice(options) {
+function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
 
+  let filters = [];
+  filters.push({name: "Zigbee_UART"});
+  let options = {};
+  options.filters = filters;
+  // options.acceptAllDevices = false;
+  
   return navigator.bluetooth.requestDevice(options)
       .then(device => {
         log('"' + device.name + '" bluetooth device selected');
