@@ -36,7 +36,7 @@ sendForm.addEventListener('submit', function(event) {
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
   let filters = [];
-  filters.push({name: ""});
+  filters.push({name: "Zigbee_UART"});
   let options = {};
   options.filters = filters;
   
