@@ -61,6 +61,7 @@ function disconnect() {
       log('"' + deviceCache.name +
           '" bluetooth device is already disconnected');
     }
+  }
 }
 
 function handleDisconnection(event) {
