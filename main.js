@@ -1,16 +1,23 @@
 // Get references to UI elements
 let connectButton = document.getElementById('connect');
+let emergencyButton = document.getElementById("emergency");
 let disconnectButton = document.getElementById('disconnect');
+
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
 let inputField = document.getElementById('input');
 
 // Characteristic object cache
 let characteristicCache = null;
+let deviceCache = null;
 
 // Connect to the device on Connect button click
 connectButton.addEventListener('click', function() {
   connect();
+});
+
+emergencyButton.addEventListener("click", function(){
+  emergency();
 });
 
 // Disconnect from the device on Disconnect button click
@@ -28,11 +35,20 @@ sendForm.addEventListener('submit', function(event) {
 
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
-  return (deviceCache ? Promise.resolve(deviceCache) :
-      requestBluetoothDevice()).
-      then(device => connectDeviceAndCacheCharacteristic(device)).
-      then(characteristic => startNotifications(characteristic)).
-      catch(error => log(error));
+  let filters = [];
+  filters.push({name: ""});
+  let options = {};
+  options.filters = filters;
+  
+  deviceCache = requestBluetoothDevice()
+      .then(device => connectDeviceAndCacheCharacteristic(device))
+      //.then(characteristic => startNotifications(characteristic))
+      .catch(error => log(error));
+}
+
+function emergency()
+{
+  
 }
 
 // Disconnect from the connected device
@@ -46,18 +62,16 @@ function send(data) {
 }
 
 
-function requestBluetoothDevice() {
+function requestBluetoothDevice(options) {
   log('Requesting bluetooth device...');
 
-  return navigator.bluetooth.requestDevice({
-    filters: [{services: [0xFFE0]}],
-  }).
+  return navigator.bluetooth.requestDevice(options).
       then(device => {
         log('"' + device.name + '" bluetooth device selected');
         deviceCache = device;
 
         return deviceCache;
-});
+      });
 }
 
 // Connect to the device specified, get service and characteristic
