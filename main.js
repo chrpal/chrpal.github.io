@@ -39,6 +39,7 @@ function connect() {
   filters.push({name: "Zigbee_UART"});
   let options = {};
   options.filters = filters;
+  options.acceptAllDevices = false;
   
   deviceCache = requestBluetoothDevice(options)
       .then(device => connectDeviceAndCacheCharacteristic(device))
