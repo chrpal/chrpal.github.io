@@ -43,7 +43,7 @@ function connect() {
 
 function emergency()
 {
-  
+  send("emergency");
 }
 
 // Disconnect from the connected device
