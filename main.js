@@ -96,7 +96,7 @@ function requestBluetoothDevice() {
 
   let filters = [];
   filters.push({name: "Zigbee_UART"});
-  filters.push({services: ["e50e24dcca9e-e0a9-f393-b5a3-6e400001"]});
+  filters.push({services: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']});
   let options = {};
   options.filters = filters;
   //options.optionalServices = ["e50e24dcca9e-e0a9-f393-b5a3-6e400001"];
@@ -123,12 +123,12 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(server => {
         log('GATT server connected, getting service...');
 
-        return server.getPrimaryService("e50e24dcca9e-e0a9-f393-b5a3-6e400001");
+        return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
       }).
       then(service => {
         log('Service found, getting characteristic...');
                                           
-        return service.getCharacteristic("e50e24dcca9e-e0a9-f393-b5a3-6e400002");
+        return service.getCharacteristic('6e400002-b5a3-f393-e0a9-e50e24dcca9e');
       }).
       then(characteristic => {
         log('Characteristic found');
