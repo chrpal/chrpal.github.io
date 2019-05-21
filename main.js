@@ -40,7 +40,7 @@ function connect() {
   let options = {};
   options.filters = filters;
   
-  deviceCache = requestBluetoothDevice()
+  deviceCache = requestBluetoothDevice(options)
       .then(device => connectDeviceAndCacheCharacteristic(device))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
@@ -65,8 +65,8 @@ function send(data) {
 function requestBluetoothDevice(options) {
   log('Requesting bluetooth device...');
 
-  return navigator.bluetooth.requestDevice(options).
-      then(device => {
+  return navigator.bluetooth.requestDevice(options)
+      .then(device => {
         log('"' + device.name + '" bluetooth device selected');
         deviceCache = device;
 
