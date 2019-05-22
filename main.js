@@ -2,6 +2,7 @@
 let connectButton = document.getElementById('connect');
 let emergencyButton = document.getElementById("emergency");
 let disconnectButton = document.getElementById('disconnect');
+let resetButton = document.getElementByID('reset');
 
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
@@ -25,6 +26,10 @@ disconnectButton.addEventListener('click', function() {
   disconnect();
 });
 
+resetButton.addEventListener('click', function() {
+  reset();
+});
+
 // Handle form submit event
 sendForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form sending
@@ -44,6 +49,11 @@ function connect() {
 function emergency()
 {
   send('emergency');
+}
+
+function reset()
+{
+  send('reset');
 }
 
 // Disconnect from the connected device
