@@ -1,14 +1,16 @@
-var TTNApi = 0;
+/*var TTNApi = 0;
 
 require(['./ttnapi/index.js'], function (ttnapi) {
     TTNApi = ttnapi.ApiClient.instance;
     InitializeAll();
-});
+});*/
+
+InitializeAll();
 
 function InitializeAll()
 {
-  TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
-  TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";
+  /*TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
+  TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";*/
 
   // Get references to UI elements
   let connectButton = document.getElementById('connect');
