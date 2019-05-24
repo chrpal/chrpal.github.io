@@ -1,4 +1,5 @@
-const Swagger = require('../ttnapi/index.js')
+const Swagger = require('../ttnapi/index');
+const TTNApi = Swagger.ApiClient.instance;
 
 // Get references to UI elements
 let connectButton = document.getElementById('connect');
@@ -55,7 +56,7 @@ function connect() {
 
 function getRescueSignal()
 {
-  //TODO
+  Swagger.ApiClient.
 }
 
 function emergency()
