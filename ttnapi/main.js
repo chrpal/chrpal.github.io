@@ -16,8 +16,8 @@ function InitializeAll()
   let connectButton = document.getElementById('connect');
   let emergencyButton = document.getElementById("emergency");
   let disconnectButton = document.getElementById('disconnect');
-  let resetButton = document.getElementByID('reset');
-  let rescueSignalButton = document.getElementByID('rescuesignal');
+  let resetButton = document.getElementById('reset');
+  let rescueSignalButton = document.getElementById('rescuesignal');
 
   let terminalContainer = document.getElementById('terminal');
   let sendForm = document.getElementById('send-form');
