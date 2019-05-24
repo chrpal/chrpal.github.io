@@ -1,5 +1,7 @@
 const Swagger = require('../ttnapi/index');
-const TTNApi = Swagger.ApiClient.instance;
+var TTNApi = Swagger.ApiClient.instance;
+TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
+TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";
 
 // Get references to UI elements
 let connectButton = document.getElementById('connect');
@@ -56,7 +58,12 @@ function connect() {
 
 function getRescueSignal()
 {
-  Swagger.ApiClient.
+  TTNApi.DevicesApi.apiV2DevicesGet(
+  function(error, data, response) {
+    alert(error);
+    alert(data);
+    alert(response);
+  });
 }
 
 function emergency()
