@@ -1,4 +1,4 @@
-const Swagger = require('../ttnapi/index');
+const Swagger = require('/ttnapi/index');
 var TTNApi = Swagger.ApiClient.instance;
 TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
 TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";
