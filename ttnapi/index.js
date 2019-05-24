@@ -20,7 +20,7 @@
     define(['ApiClient', 'ttnpi/model/Data', 'ttnpi/api/DevicesApi', 'ttnpi/api/QueryApi', 'ttnpi/api/QuerydeviceIdApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ttnpi/ApiClient'), require('./ttnpi/model/Data'), require('./ttnpi/api/DevicesApi'), require('./ttnpi/api/QueryApi'), require('./ttnpi/api/QuerydeviceIdApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Data'), require('./api/DevicesApi'), require('./api/QueryApi'), require('./api/QuerydeviceIdApi'));
   }
 }(function(ApiClient, Data, DevicesApi, QueryApi, QuerydeviceIdApi) {
   'use strict';
