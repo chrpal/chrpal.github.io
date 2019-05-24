@@ -1,52 +1,60 @@
-const Swagger = require('/ttnapi/index');
-var TTNApi = Swagger.ApiClient.instance;
-TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
-TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";
+var TTNApi = 0;
 
-// Get references to UI elements
-let connectButton = document.getElementById('connect');
-let emergencyButton = document.getElementById("emergency");
-let disconnectButton = document.getElementById('disconnect');
-let resetButton = document.getElementByID('reset');
-let rescueSignalButton = document.getElementByID('rescuesignal');
-
-let terminalContainer = document.getElementById('terminal');
-let sendForm = document.getElementById('send-form');
-let inputField = document.getElementById('input');
-
-// Characteristic object cache
-let characteristicCache = null;
-let deviceCache = null;
-
-// Connect to the device on Connect button click
-connectButton.addEventListener('click', function() {
-  connect();
+require(['/ttnapi/index'], function (ttnapi) {
+    TTNApi = ttnapi.ApiClient.instance;
+    InitializeAll();
 });
 
-emergencyButton.addEventListener("click", function(){
-  emergency();
-});
+function InitializeAll()
+{
+  TTNApi.basepath = "https://rescuetag.data.thethingsnetwork.org/";
+  TTNApi.authentications.value = "ttn-account-v2.yoRblsitvK4O5-Y31iQebd2j3RGslXrCwvCuM0qxN3Y";
 
-// Disconnect from the device on Disconnect button click
-disconnectButton.addEventListener('click', function() {
-  disconnect();
-});
+  // Get references to UI elements
+  let connectButton = document.getElementById('connect');
+  let emergencyButton = document.getElementById("emergency");
+  let disconnectButton = document.getElementById('disconnect');
+  let resetButton = document.getElementByID('reset');
+  let rescueSignalButton = document.getElementByID('rescuesignal');
 
-resetButton.addEventListener('click', function() {
-  reset();
-});
+  let terminalContainer = document.getElementById('terminal');
+  let sendForm = document.getElementById('send-form');
+  let inputField = document.getElementById('input');
 
-rescueSignalButton.addEventListener('click', function() {
-  getRescueSignal();
-});
+  // Characteristic object cache
+  let characteristicCache = null;
+  let deviceCache = null;
 
-// Handle form submit event
-sendForm.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form sending
-  send(inputField.value); // Send text field contents
-  inputField.value = '';  // Zero text field
-  inputField.focus();     // Focus on text field
-});
+  // Connect to the device on Connect button click
+  connectButton.addEventListener('click', function() {
+    connect();
+  });
+
+  emergencyButton.addEventListener("click", function(){
+    emergency();
+  });
+
+  // Disconnect from the device on Disconnect button click
+  disconnectButton.addEventListener('click', function() {
+    disconnect();
+  });
+
+  resetButton.addEventListener('click', function() {
+    reset();
+  });
+
+  rescueSignalButton.addEventListener('click', function() {
+    getRescueSignal();
+  });
+
+  // Handle form submit event
+  sendForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form sending
+    send(inputField.value); // Send text field contents
+    inputField.value = '';  // Zero text field
+    inputField.focus();     // Focus on text field
+  });
+}
 
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
