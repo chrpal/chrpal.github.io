@@ -1,6 +1,6 @@
 var TTNApi = 0;
 
-require(['./ttnpi/index.js'], function (ttnapi) {
+require(['./ttnapi/index.js'], function (ttnapi) {
     TTNApi = ttnapi.ApiClient.instance;
     InitializeAll();
 });
