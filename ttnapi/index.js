@@ -17,7 +17,7 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Data', 'api/DevicesApi', 'api/QueryApi', 'api/QuerydeviceIdApi'], factory);
+    define(['ttnapi/ApiClient', 'ttnapi/model/Data', 'ttnapi/api/DevicesApi', 'ttnapi/api/QueryApi', 'ttnapi/api/QuerydeviceIdApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('./ttnapi/ApiClient'), require('./ttnapi/model/Data'), require('./ttnapi/api/DevicesApi'), require('./ttnapi/api/QueryApi'), require('./ttnapi/api/QuerydeviceIdApi'));
