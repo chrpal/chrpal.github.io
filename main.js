@@ -3,6 +3,7 @@ let connectButton = document.getElementById('connect');
 let emergencyButton = document.getElementById("emergency");
 let disconnectButton = document.getElementById('disconnect');
 let resetButton = document.getElementByID('reset');
+let rescueSignalButton = document.getElementByID('rescuesignal');
 
 let terminalContainer = document.getElementById('terminal');
 let sendForm = document.getElementById('send-form');
@@ -30,6 +31,10 @@ resetButton.addEventListener('click', function() {
   reset();
 });
 
+rescueSignalButton.addEventListener('click', function() {
+  getRescueSignal();
+});
+
 // Handle form submit event
 sendForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form sending
@@ -44,6 +49,11 @@ function connect() {
       .then(device => connectDeviceAndCacheCharacteristic(device))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
+}
+
+function getRescueSignal()
+{
+  //TODO
 }
 
 function emergency()
