@@ -1,3 +1,5 @@
+const Swagger = require('../ttnapi/index.js')
+
 // Get references to UI elements
 let connectButton = document.getElementById('connect');
 let emergencyButton = document.getElementById("emergency");
