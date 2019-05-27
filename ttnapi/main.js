@@ -72,9 +72,9 @@ function InitializeAll()
 function connect() {
   deviceCache = requestBluetoothDevice()
       .then(device => connectDeviceAndCacheCharacteristic(device))
-      .then(characteristic => heartbeattimer = setInterval(function () {heartbeat();}, 1000))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
+    heartbeattimer = setInterval(function() {heartbeat();}, 1000);
 }
 
 function getRescueSignal()
