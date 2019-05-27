@@ -70,11 +70,11 @@ function InitializeAll()
 
 // Launch Bluetooth device chooser and connect to the selected
 function connect() {
+  heartbeattimer = window.setInterval(function() {heartbeat();}, 1000);
   deviceCache = requestBluetoothDevice()
       .then(device => connectDeviceAndCacheCharacteristic(device))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
-  heartbeattimer = window.setInterval(function() {heartbeat();}, 1000);
 }
 
 function getRescueSignal()
