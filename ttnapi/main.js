@@ -14,8 +14,12 @@ function InitializeAll()
 
   // Get references to UI elements
   let connectButton = document.getElementById('connect');
-  let emergencyButton = document.getElementById("emergency");
   let disconnectButton = document.getElementById('disconnect');
+    
+  let emergencyButton = document.getElementById("emergency");
+  let linkbrokenButton = document.getElementById("linkbroken");
+  let overstressButton = document.getElementById("overstress");
+    
   let resetButton = document.getElementById('reset');
   let rescueSignalButton = document.getElementById('rescuesignal');
 
@@ -27,6 +31,14 @@ function InitializeAll()
   let characteristicCache = null;
   let deviceCache = null;
 
+  linkbrokenButton.addEventListener('click', function() {
+    linkbroken();
+  });
+    
+  overstressButton.addEventListener('click', function() {
+    overstress();
+  });
+    
   // Connect to the device on Connect button click
   connectButton.addEventListener('click', function() {
     connect();
@@ -68,17 +80,21 @@ function connect() {
 
 function getRescueSignal()
 {
-  TTNApi.DevicesApi.apiV2DevicesGet(
-  function(error, data, response) {
-    alert(error);
-    alert(data);
-    alert(response);
-  });
 }
 
 function emergency()
 {
-  send('emergency');
+  send('fallen');
+}
+
+function linkbroken()
+{
+    send('linkbroken');
+}
+
+function overstress()
+{
+    send('overstress');
 }
 
 function reset()
