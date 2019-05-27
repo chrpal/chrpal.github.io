@@ -151,7 +151,7 @@ function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
 
   let filters = [];
-  filters.push({name: "Zigbee_UART"});
+  filters.push({name: "Rescue Tag"});
   filters.push({services: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']});
   let options = {};
   options.filters = filters;
