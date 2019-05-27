@@ -74,7 +74,7 @@ function connect() {
       .then(device => connectDeviceAndCacheCharacteristic(device))
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
-  //heartbeattimer = setInterval(function() {heartbeat();}, 1000);
+  heartbeattimer = setInterval(function() {heartbeat();}, 1000);
 }
 
 function getRescueSignal()
