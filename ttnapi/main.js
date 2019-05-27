@@ -30,6 +30,8 @@ function InitializeAll()
   // Characteristic object cache
   let characteristicCache = null;
   let deviceCache = null;
+    
+  let heartbeattimer = null;
 
   linkbrokenButton.addEventListener('click', function() {
     linkbroken();
@@ -51,6 +53,7 @@ function InitializeAll()
   // Disconnect from the device on Disconnect button click
   disconnectButton.addEventListener('click', function() {
     disconnect();
+    clearInterval(heartbeattimer);
   });
 
   resetButton.addEventListener('click', function() {
@@ -74,6 +77,7 @@ function InitializeAll()
 function connect() {
   deviceCache = requestBluetoothDevice()
       .then(device => connectDeviceAndCacheCharacteristic(device))
+      .then(characteristic => heartbeattimer = setInterval(function () {heartbeat();}, 1000);)
       //.then(characteristic => startNotifications(characteristic))
       .catch(error => log(error));
 }
@@ -95,6 +99,11 @@ function linkbroken()
 function overstress()
 {
     send('overstress');
+}
+
+function heartbeat()
+{
+    send('heartbeat');
 }
 
 function reset()
