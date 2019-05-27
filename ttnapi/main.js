@@ -21,7 +21,6 @@ function InitializeAll()
   let overstressButton = document.getElementById("overstress");
     
   let resetButton = document.getElementById('reset');
-  let rescueSignalButton = document.getElementById('rescuesignal');
 
   let terminalContainer = document.getElementById('terminal');
   let sendForm = document.getElementById('send-form');
@@ -58,10 +57,6 @@ function InitializeAll()
 
   resetButton.addEventListener('click', function() {
     reset();
-  });
-
-  rescueSignalButton.addEventListener('click', function() {
-    getRescueSignal();
   });
 
   // Handle form submit event
