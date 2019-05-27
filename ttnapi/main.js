@@ -52,7 +52,7 @@ function InitializeAll()
   // Disconnect from the device on Disconnect button click
   disconnectButton.addEventListener('click', function() {
     disconnect();
-    clearInterval(heartbeattimer);
+    window.clearInterval(heartbeattimer);
   });
 
   resetButton.addEventListener('click', function() {
