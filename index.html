@@ -1,23 +1,32 @@
 <html>
     <body>
     <script>
-        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-  document.write("enumerateDevices() not supported.<br>");
-}
-        else{
-var promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-// List cameras and microphones.
-
-navigator.mediaDevices.enumerateDevices()
+        var promise;
+        
+        function printit()
+        {
+            navigator.mediaDevices.enumerateDevices()
 .then(function(devices) {
   devices.forEach(function(device) {
     document.write(device.kind + ": " + device.label +
                 " id = " + device.deviceId+"<br>");
+      document.write(promise);
+      document.write("<br>");
   });
 })
 .catch(function(err) {
   document.write(err.name + ": " + err.message+"<br>");
 });
+        }
+        
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+  document.write("enumerateDevices() not supported.<br>");
+}
+        else{
+ promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+// List cameras and microphones.
+
+            setTimeout(function(){ printit(); }, 5000);
         }
     </script>
     </body>
