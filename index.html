@@ -1,8 +1,8 @@
 <html>
+    <body>
     <script>
         if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
   document.write("enumerateDevices() not supported.<br>");
-  return;
 }
 
 // List cameras and microphones.
@@ -18,4 +18,5 @@ navigator.mediaDevices.enumerateDevices()
   document.write(err.name + ": " + err.message+"<br>");
 });
     </script>
+    </body>
 </html>
