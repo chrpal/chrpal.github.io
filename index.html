@@ -10,9 +10,9 @@
   devices.forEach(function(device) {
     document.write(device.kind + ": " + device.label +
                 " id = " + device.deviceId+"<br>");
-      document.write(promise);
-      document.write("<br>");
   });
+      document.write(JSON.stringify(promise));
+      document.write("<br>");
 })
 .catch(function(err) {
   document.write(err.name + ": " + err.message+"<br>");
