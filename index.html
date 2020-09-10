@@ -1,45 +1,21 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="semantic/dist/semantic.min.js"></script>
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-</head>
-<body>
-    <div class="ui Segment">
-        <button class="ui blue button" id="connect">Connect with tag</button><br><br>
-        <button class="ui red button" id="disconnect" type="button">Disconnect</button><br><br>
-        <br>
-        <br>
-        <button class="ui blue button" id="linkbroken">Emulate broken link</button><br><br>
-        <button class="ui blue button" id="overstress">Overstress Warning</button><br><br>
-        <button class="ui blue button" id="emergency">Emergency Signal</button><br><br>
-        <br>
-        <br>
-        <button class="ui blue button" id="reset">Reset Tag</button><br><br>
-    </div>
+    <script>
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+  document.write("enumerateDevices() not supported.<br>");
+  return;
+}
 
-<div style="display: none;">
-        <div id="terminal">
-            <div>Device connection...</div>
-            <div class="out">Outcoming message</div>
-            <div class="in">Incoming message</div>    
-        </div>
+// List cameras and microphones.
 
-        <form id="send-form">
-            <input id="input" type="text">
-            <button type="submit">Send</button>
-        </form>
-    </div>
-
-<script src="/ttnapi/main.js"></script>
-
-</body>
+navigator.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    document.write(device.kind + ": " + device.label +
+                " id = " + device.deviceId+"<br>");
+  });
+})
+.catch(function(err) {
+  document.write(err.name + ": " + err.message+"<br>");
+});
+    </script>
 </html>
